@@ -59,6 +59,6 @@ module IssuesHelper
   def last_issue_note(issue)
     note_journals = issue.journals.select(&:notes?)
     return t(:text_no_notes) if note_journals.empty?
-    note_journals.last.notes
+    note_journals.last.notes << ' (' << note_journals.last.user.to_s << ')'
   end
 end
